@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: oklch(0.5 0.13 148);
+  --color-brand-dark: oklch(0.36 0.09 150);
+  --color-tint: oklch(0.972 0.02 140);
+  --color-cta: oklch(0.82 0.16 82);
+  --color-cta-hover: oklch(0.77 0.16 78);
+  --color-ink: oklch(0.23 0.025 150);
+  --color-muted: oklch(0.44 0.02 150);
+  --color-line: oklch(0.91 0.02 140);
+  --color-star: oklch(0.78 0.16 75);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+}
+
+html { background: oklch(0.996 0.003 140) !important; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  background: oklch(0.996 0.003 140) !important;
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1.125rem; line-height: 1.6; font-kerning: normal;
+}
+h1, h2, h3 { font-family: var(--font-heading), system-ui, sans-serif; line-height: 1.12; letter-spacing: -0.015em; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 3.25rem; padding: 0 1.4rem; border-radius: .625rem; font-weight: 700;
+  transition: transform 160ms cubic-bezier(.2,.8,.2,1), background-color 160ms ease;
+}
+.btn:active { transform: scale(0.98); }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--color-brand); outline-offset: 3px; }
+
+.card { transition: transform 200ms cubic-bezier(.2,.8,.2,1), box-shadow 200ms ease, border-color 200ms ease; }
+.card:hover { transform: translateY(-3px); border-color: var(--color-brand); box-shadow: 0 16px 32px -22px oklch(0.35 0.08 150 / .45); }
+
+@keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.up { animation: up 500ms cubic-bezier(.2,.8,.2,1) both; }
+.up-2 { animation-delay: 110ms; }
+
+details summary { list-style: none; cursor: pointer; }
+details summary::-webkit-details-marker { display: none; }
+details[open] .chev { transform: rotate(180deg); }
+.chev { transition: transform 200ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
